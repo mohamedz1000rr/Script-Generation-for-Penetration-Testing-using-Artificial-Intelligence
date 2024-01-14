@@ -1,42 +1,53 @@
-import gpt_2_simple as gpt2
+import torch
+from transformers import GPT2Tokenizer, GPT2LMHeadModel, GPT2Config
+from transformers import TextDataset, DataCollatorForLanguageModeling
+from transformers import Trainer, TrainingArguments
 
-# Download GPT-2 model
-model_name = "124M"
-gpt2.download_gpt2(model_name=model_name)
+# Path to your text file
+data_file_path = "E:/code-gen-main/python_code_text_data.txt"
 
-# Set file paths
-text_file_path = "E:/code-gen-main/python_code_text_data.txt"
-checkpoint_dir = "checkpoint"
-model_save_path = "fine_tuned_model/model"
+# Load the GPT-2 tokenizer
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 
 # Tokenize and encode the data
-sess = gpt2.start_tf_sess()
-gpt2.encode_dataset(
-    sess,
-    text_file_path,
-    model_name=model_name,
-    out_path="encoded.npz"
+with open(data_file_path, "r", encoding="utf-8") as file:
+    data = file.read()
+
+# Tokenize the data
+tokenized_data = tokenizer.encode(data, return_tensors="pt")
+
+# Save the tokenized data
+torch.save(tokenized_data, "tokenized_data.pt")
+
+# Load GPT-2 model and configuration
+model_config = GPT2Config.from_pretrained("gpt2")
+model = GPT2LMHeadModel(config=model_config)
+
+# Create a dataset and data collator
+dataset = TextDataset(tokenized_data, tokenizer=tokenizer)
+data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+
+# Training arguments
+training_args = TrainingArguments(
+    output_dir="./gpt2-finetuned",
+    overwrite_output_dir=True,
+    num_train_epochs=1,
+    per_device_train_batch_size=1,
+    save_steps=10_000,
+    save_total_limit=2,
 )
 
-# Finetune the GPT-2 model
-gpt2.finetune(
-    sess,
-    dataset="encoded.npz",
-    model_name=model_name,
-    steps=1000,
-    restore_from='fresh',
-    run_name='run1',
-    checkpoint_dir=checkpoint_dir
+# Create Trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    data_collator=data_collator,
+    train_dataset=dataset,
 )
 
-# Save the fine-tuned model
-gpt2.save_gpt2(sess, model_save_path)
+# Train the model
+trainer.train()
 
-# Generate text using the fine-tuned model
-generated_text = gpt2.generate(sess, run_name='run1', return_as_list=True)[0]
-
-# Print or save the generated text as needed
-print(generated_text)
-
-# Close the TensorFlow session
-gpt2.reset_session(sess)
+# Save the trained model
+model.save_pretrained("./gpt2-finetuned")
+tokenizer.save_pretrained("./gpt2-finetuned")
