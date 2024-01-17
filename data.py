@@ -1,49 +1,37 @@
 ## File for data gathering using github API key
-
+import stat
 from github import Github
 import os
 import time
 from tqdm import tqdm
-
-
-g = Github("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")
+g = Github("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")
 print(g.get_user())
 
-query = "payloads python"
+query = "web payloads"
 
 result = g.search_repositories(query)
-
-
 no_of_repos = 10
 
 for i in range(no_of_repos):
   print(result[i].clone_url)
   print(result[i].tags_url) 
   os.system(f"git clone {result[i].clone_url} repos/{result[i].owner.login}/{result[i].name}")
-  
-  
-
-
-import os
-import stat
 d = "repos"
 
 for dirpath, dirnames, filenames in tqdm(os.walk(d)):
   for f in filenames:
     full_path = os.path.join(dirpath,f)
     os.chmod(full_path, stat.S_IWRITE)
-    if full_path.endswith(".py"):
+    if full_path.endswith((".txt",".html")):
       # print(f"Keeping {full_path}")
       pass
     else:
       if d in full_path:
         os.remove(full_path)
       else:
-        print("kuch to gadbad hai")
+        
         time.sleep(60)
-        
-        
-
+    
 def get_dir_size(start_path='.'):
     total_size = 0
     for dirpath, dirnames, filenames in os.walk(start_path):
@@ -63,13 +51,10 @@ def get_subdir_count(start_path='.'):
 
     return subdir_count
 
-dir_to_check = "/content/repos"  # replace with your directory
+dir_to_check = "E:/Grad/repos"  
 
 print(f"Total size of '{dir_to_check}' is {get_dir_size(dir_to_check)/(1024*1024)} MB")
 print(f"Number of subdirectories in '{dir_to_check}' is {get_subdir_count(dir_to_check)}")
-
-import os 
-import time
 
 MAX_CHAR_LENGTH = 512
 MIN_CHAR_LENGTH = 400
@@ -82,7 +67,7 @@ for dirpath, dirnames, filenames in os.walk(d):
     full_path = os.path.join(dirpath,f)
     full_paths.append(full_path)
 
-with open("python_code_text_data.txt","a") as f:
+with open("text_data.txt","a") as f:
   for fpath in full_paths:
     try:
       d = open(fpath,"r").read()
