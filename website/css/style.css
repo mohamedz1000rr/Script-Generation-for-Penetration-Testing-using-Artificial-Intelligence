@@ -1,1 +1,397 @@
+.login-container {
+  background-color: #fff;
+  width: 400px;
+  padding: 20px;
+  margin-top: 150px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+h2 {
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  padding-right: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#error-message {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.admin-container {
+  margin-top: 150px;
+  display: flex;
+  padding-bottom: 150px;
+}
+
+.card {
+  justify-content: center;
+  background-color: #fff;
+  padding: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+}
+
+.card h2 {
+  text-align: center;
+}
+
+.btn {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  color: #333;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f2f2f2;
+}
+
+.generate-scripts-container {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 150px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px; /* Adjust width as needed */
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px; /* Add margin below heading */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px; /* Add bottom padding */
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 20px; /* Add margin below button */
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+textarea {
+  width: 94%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 200px; /* Set desired height */
+  resize: none; /* Disable resizing */
+}
+
+.container {
+  width: 80%;
+  margin-top: 160px;
+  overflow-y: auto;
+  height: 500px;
+  border: 1px solid #ccc;
+}
+
+.history-row {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar {
+  height: 50px;
+  background-color: #343a40;
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+.navbar .logo img {
+  height: 40px;
+}
+
+.navbar-right {
+  padding-right: 20px;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  border-radius: 5px;
+  margin-right: 40px;
+}
+.navbar a.logout-button:hover {
+  background-color: darkred;
+}
+/* Basic table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  overflow: hidden; /* Ensure border-radius works properly */
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Hover effects for rows */
+tbody tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Styling for the header to make it stand out */
+thead th {
+  background-color: #004d99;
+  color: white; /* Add border radius for top right corner */
+}
+thead th:first-child {
+  border-top-left-radius: 10px; /* Add border radius for top left corner */
+}
+thead th:last-child {
+  border-top-right-radius: 10px;
+  position: relative; /* Needed to properly position the sort buttons */
+  padding-left: 20px; /* Add border radius for top left corner */
+}
+
+/* Responsive table design */
+@media screen and (max-width: 600px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    border: 1px solid #ccc;
+  }
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    content: attr(data-title);
+    color: #333;
+  }
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+header {
+  position: relative;
+  top: 50px;
+  background-color: #004d99;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+#about {
+  padding-top: 70px;
+  background-color: #f4f4f4;
+  width: 60%;
+}
+
+#team {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #ddd;
+  width: 100%; /* Sets the width of the team section to 100% of its parent container */
+  box-sizing: border-box;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.team-member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.main-footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .feature-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+.sort-buttons a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #989898;
+  font-size: 12px;
+}
+
+.sort-buttons {
+  position: absolute;
+  right: 5px;
+  top: 15px;
+  transform: translateY(-50%);
+  height: 24px;
+}
